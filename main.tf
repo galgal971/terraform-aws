@@ -6,6 +6,12 @@ terraform {
       version = "~> 5.0"
     }
   }
+  backend "s3" {
+    bucket         = "pyaephyo-terraform-state-bucket" # Must match your exact bucket name
+    key            = "dev/terraform.tfstate"           # The folder path inside the bucket
+    region         = "us-east-1"
+    encrypt        = true                              # Encrypts the state file for security
+  }
 }
 
 # 2. Strict cloud keyword, passing your custom variable reference
